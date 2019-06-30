@@ -19,6 +19,7 @@
                     <%item.images.otherImg.forEach(img => {%>
                         <img src="/images/<%=img%>" alt="" height="120px">
                     <%})%>
+                    <a href="/user/remove/<%=item.username%>" class="btn btn-danger">Remove</a>
                 </li>
             <%})%>
         </ul>
