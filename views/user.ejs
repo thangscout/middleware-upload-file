@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <ul class="list-group mb-5">
+            <%users.forEach(item => {%>
+                <li class="border-0 list-group-item">
+                    <span><%= item.username%></span>
+                    <img src="/images/<%=item.images.mainImg%>" height="120px" alt="">
+                    <%item.images.otherImg.forEach(img => {%>
+                        <img src="/images/<%=img%>" alt="" height="120px">
+                    <%})%>
+                </li>
+            <%})%>
+        </ul>
+        <form action="/user/add" method="post" enctype="multipart/form-data" class="mb-5">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <!-- <input type="text" name="username" placeholder="Animal name">
+            <br> -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="mainImg">Main images</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="mainImg" class="custom-file-input" id="mainImg01" aria-describedby="mainImg">
+                    <label class="custom-file-label" for="mainImg01">Choose file</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="otherImg">Other images</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="otherImg" class="custom-file-input" id="otherImg01" aria-describedby="otherImg">
+                    <label class="custom-file-label" for="otherImg01">Choose file</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="otherImg">Other images</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="otherImg" class="custom-file-input" id="otherImg02" aria-describedby="otherImg">
+                    <label class="custom-file-label" for="otherImg02">Choose file</label>
+                </div>
+            </div>
+            <!-- <input type="file" name="mainImg" id="">
+            <br> -->
+            <!-- <input type="file" name="otherImg" id="">
+            <br>
+            <input type="file" name="otherImg" id="">
+            <br> -->
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</body>
+</html>
